@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import Swal, { SweetAlertOptions } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
