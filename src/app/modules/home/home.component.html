@@ -1,40 +1,43 @@
-<header>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand float-md-start" href="#">SALA DE JUEGOS</a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto position-absolute" style="right:0">
-                    <li class="nav-item active">
-                        <a id="linkHome" class="nav-link" routerLink="">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="linkQuienSoy" class="nav-link" routerLink="quiensoy">Quién Soy</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Juegos
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item">Tateti</a></li>
-                          <li><a class="dropdown-item">Memotest</a></li>
-                          <li><a class="dropdown-item">Piedra, papel o tijera</a></li>
-                        </ul>
-                      </li>
-                
-                    <li class="nav-item">
-                        <a id="linkLogin" class="nav-link" role="button" (click)="logout()">Salir</a>
-                    </li>
+<nav class="navbar navbar-expand-lg navbar-dark p-2 pt-3 border-start border-bottom border-end border-secondary">
+    <div class="container-fluid">
+    <a class="navbar-brand text-start w-100" routerLink="" title="Hola!">SALA DE JUEGOS</a>
+    
+    <button class="border-0 mt-2 top-0 end-0 navbar-toggler position-absolute" type="button" (click)="toggleNavbar = !toggleNavbar" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="toggleNavbar">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active">
+                <a id="linkHome" class="nav-link" routerLink="">Inicio</a>
+            </li> -->
+            <li ngbDropdown class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" role="button" aria-expanded="false">
+                    Juegos
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu-dark">
+                    <li><a ngbDropdownItem class="nav-link" routerLink="juego1">Tateti</a></li>
+                    <li><a ngbDropdownItem class="nav-link" routerLink="juego2">Memotest</a></li>
+                    <li><a ngbDropdownItem class="nav-link" routerLink="juego3">Piedra, papel o tijera</a></li>
                 </ul>
-            </div>
-        </nav>
+            </li>
+            <li ngbDropdown class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" role="button" aria-expanded="false">
+                    {{usuario!.nombre}}
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu-dark">
+                    <li><a ngbDropdownItem class="nav-link" routerLink="usuario">Ver perfil</a></li>
+                    <li><a ngbDropdownItem class="nav-link" (click)="logout()">Salir</a></li>
+                </ul>
+            </li>            
+            <li class="nav-item text-nowrap">
+                <a id="linkQuienSoy" class="nav-link" routerLink="quiensoy">Quién Soy</a>
+            </li>
+        </ul>
     </div>
-</header>
+</div>
+</nav>
 
-<body class="bg-transparent text-bg-dark">
+<div class="bg-transparent text-bg-dark">
     <router-outlet></router-outlet>
-</body>
+</div>

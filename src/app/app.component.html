@@ -1,8 +1,15 @@
-<body class="d-flex h-100 text-center text-white bg-dark dflex-column min-vh-100">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<div class="my-overlay" *ngIf="showOverlay">
+  <div class="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+</div>
+
+<main class="text-center bg-dark">
+  <div class="cover-container p-3 pt-0 mx-auto">
       <router-outlet></router-outlet>
   </div>
-</body>
-<footer class="bg-dark p-3 text-center w-100">
-  <span class="text-muted">LEMOS LAUTARO LUCAS - 2023</span>
+</main>
+<footer class="border-top border-secondary text-center w-100">
+  <span class="text-light font-monospace">LEMOS LAUTARO LUCAS - 2023</span>
 </footer>

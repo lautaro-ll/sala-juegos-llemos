@@ -41,7 +41,7 @@ export class RegistroComponent {
         this.regForm.get('clave')?.value!)
         .then((id) => {
           this.nuevoId = id!;
-          this.usuariosService.guardar(new Usuario(
+          this.usuariosService.setUsuario(new Usuario(
             this.regForm.get('mail')?.value!,
             this.regForm.get('clave')?.value!,
             this.regForm.get('nombre')?.value!),this.nuevoId)
@@ -49,10 +49,6 @@ export class RegistroComponent {
               this.autenticacionService.login(
                 this.regForm.get('mail')?.value!,
                 this.regForm.get('clave')?.value!)
-                .then(() => {
-                  this.usuariosService.updateLoginState(this.nuevoId);
-                  this.router.navigate(['']);
-                })
               })
             }).catch((error) => {    
               if(error.code == 'auth/email-already-in-use') {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { InterceptorService } from 'src/app/services/interceptor.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private autenticacionService: AutenticacionService, private usuariosService: UsuariosService) { }
+  constructor(private router: Router, private autenticacionService: AutenticacionService, private usuariosService: UsuariosService, private interceptor: InterceptorService) { }
   faUser = faUser;
   loginForm!: FormGroup;
 
@@ -35,11 +36,6 @@ export class LoginComponent implements OnInit {
     this.autenticacionService.login(
       this.loginForm.get('mail')?.value!, 
       this.loginForm.get('password')?.value!)
-      .then((user)=> {
-        this.id = user?.user?.uid!;
-        this.usuariosService.updateLoginState(this.id);
-        this.router.navigateByUrl('/bienvenido');
-      })
       .catch((err) => {
         console.log(err)
         if(err.code = 400) {
