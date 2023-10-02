@@ -16,14 +16,14 @@
                     Juegos
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu-dark">
-                    <li><a ngbDropdownItem class="nav-link" routerLink="juego1">Tateti</a></li>
-                    <li><a ngbDropdownItem class="nav-link" routerLink="juego2">Memotest</a></li>
-                    <li><a ngbDropdownItem class="nav-link" routerLink="juego3">Piedra, papel o tijera</a></li>
+                    <li><a ngbDropdownItem class="nav-link" routerLink="ahorcado">Ahorcado</a></li>
+                    <li><a ngbDropdownItem class="nav-link" routerLink="mayor-o-menor">Mayor o menor</a></li>
+                    <li><a ngbDropdownItem class="nav-link" routerLink="preguntados">Preguntados</a></li>
                 </ul>
             </li>
             <li ngbDropdown class="nav-item dropdown">
                 <a ngbDropdownToggle class="nav-link dropdown-toggle" role="button" aria-expanded="false">
-                    {{usuario!.nombre}}
+                        {{usuario?.nombre}}
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu-dark">
                     <li><a ngbDropdownItem class="nav-link" routerLink="usuario">Ver perfil</a></li>

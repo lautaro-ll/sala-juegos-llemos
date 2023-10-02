@@ -1,0 +1,45 @@
+<h1 class="m-3" style="font-family: cursive;">AHORCADO</h1>
+
+<div class="card card text-bg-secondary mb-3">
+  <div class="card-body">
+    <input type="text" readonly [value]="this.palabra" class="form-control form-control-lg font-monospace text-center bg-body-secondary m3" style="letter-spacing: 0.5rem;">
+    <section id="keyboard">
+        <div class="kb-row">
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Q', $event);">Q</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('W', $event);">W</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('E', $event);">E</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('R', $event);">R</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('T', $event);">T</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Y', $event);">Y</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('U', $event);">U</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('I', $event);">I</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('O', $event);">O</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('P', $event);">P</button>
+        </div>
+        <div class="kb-row">
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('A', $event);">A</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('S', $event);">S</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('D', $event);">D</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('F', $event);">F</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('G', $event);">G</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('H', $event);">H</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('J', $event);">J</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('K', $event);">K</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('L', $event);">L</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Ñ', $event);">Ñ</button>
+        </div>
+        <div class="kb-row">
+            <!-- <button class="btn btn-dark btn-wide" type="button">ENTER</button> -->
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Z', $event);">Z</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('X', $event);">X</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('C', $event);">C</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('V', $event);">V</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('B', $event);">B</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('N', $event);">N</button>
+            <button #boton class="btn btn-dark" type="button" (click)="clickLetra('M', $event);">M</button>
+            <!-- <button class="btn btn-dark btn-wide" type="button">DEL</button> -->
+        </div>
+    </section>
+    <input type="text" readonly [value]="this.errores" class="form-control font-monospace text-center text-danger bg-dark m3">
+  </div>
+</div>

@@ -1,0 +1,20 @@
+#keyboard {
+    margin: 5px;
+  }
+  
+  .kb-row {
+    display: flex;
+    width: 100%;
+    justify-content: center!important;
+  }
+  
+  .kb-row .btn {
+    width: 3em;
+    height: 3em;
+    margin: 0.2em;
+    text-align: center;
+  }
+  
+  .palabra {
+    min-height: 2em;
+  }

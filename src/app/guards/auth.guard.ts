@@ -18,6 +18,7 @@ export const AuthGuard: CanActivateFn = (
   | UrlTree=> {
     
     if(inject(AutenticacionService).isLoggedIn()) {
+      console.log('true')
       return true;
     }
     else {

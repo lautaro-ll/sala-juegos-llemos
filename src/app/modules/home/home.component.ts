@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { InterceptorService } from 'src/app/services/interceptor.service';
@@ -17,15 +18,26 @@ export class HomeComponent implements OnInit {
   toggleNavbar = true;
   usuario?: Usuario;
   id: string = "";
+  subscription?: Subscription;
 
   ngOnInit(): void {
     this.interceptor.updateOverlayState(true);
-    const idloc = localStorage.getItem('id') ?? '';
-    this.usuariosService.getUsuario(idloc).then((respuesta) => this.usuario = respuesta) //poner en el login y traer los datos visibles del usuario a un local storage
-    .then(() => this.interceptor.updateOverlayState(false))
-    // .then(() => console.log(this.usuario)); 
-    
-    // this.usuariosService.currentLoginState.subscribe(msg => {this.id = msg; console.log(this.id);});
+
+    if(localStorage.getItem('user')) {
+      this.usuariosService.updateLoginState(JSON.parse(localStorage.getItem('user')!).uid);
+    }
+
+    this.subscription = this.usuariosService.currentLoginState.subscribe((idloc)=>{
+      console.log(idloc)
+      this.usuariosService.getUsuario(idloc)
+      .then((respuesta) => {console.log(respuesta); this.usuario = respuesta}) //poner en el login y traer los datos visibles del usuario a un local storage
+      .catch((err)=>{ console.log(err) })
+      .then(() => this.interceptor.updateOverlayState(false))
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   logout() {

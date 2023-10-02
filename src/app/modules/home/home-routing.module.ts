@@ -16,6 +16,21 @@ const routes: Routes = [ {
       loadChildren: () => import('../../modules/quien-soy/quien-soy.module')
       .then(mod => mod.QuienSoyModule)
     },
+    { 
+      path: 'ahorcado', 
+      loadChildren: () => import('../../modules/ahorcado/ahorcado.module')
+      .then(mod => mod.AhorcadoModule)
+    },
+    { 
+      path: 'mayor-o-menor', 
+      loadChildren: () => import('../../modules/mayor-o-menor/mayor-o-menor.module')
+      .then(mod => mod.MayorOMenorModule)
+    },
+    { 
+      path: 'preguntados', 
+      loadChildren: () => import('../../modules/preguntados/preguntados.module')
+      .then(mod => mod.PreguntadosModule)
+    },
   ]
 }
 ];

@@ -1,0 +1,29 @@
+<h1 class="m-3 font-monospace" style="font-size: 1.8rem;">MAYOR O MENOR</h1>
+
+<div class="row">
+    <div class="col">
+        <h2>CARTA ANTERIOR</h2><br>
+        <img [src]="cartaAnterior">
+    </div>
+    <div class="col">
+        <h2>CARTA ACTUAL</h2><br>
+        <img [src]="cartaActual">
+    </div>
+</div>
+<br>
+<div class="row">
+    <h1 class="font-monospace text-warning" style="font-size: 1.8rem;">PUNTOS: {{puntuacion}}</h1>
+</div>
+<div class="row">
+    <div class="col">
+        <button class="btn btn-success w-50" (click)="clickMayor()">
+            <fa-icon [icon]="faArrowUp" size="lg" animation="flip"></fa-icon>
+            <span style="font-size: larger;"> MAYOR</span>
+        </button>
+        <br>
+        <button class="btn btn-danger w-50 mt-2" (click)="clickMenor()">
+            <fa-icon [icon]="faArrowDown" size="lg" animation="flip"></fa-icon>
+            <span style="font-size: larger;"> MENOR</span>
+        </button>
+    </div>
+</div>
