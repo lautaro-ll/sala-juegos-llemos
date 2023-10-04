@@ -1,18 +1,30 @@
-<h1 class="m-3 font-monospace" style="font-size: 1.8rem;">MAYOR O MENOR</h1>
+<h1 class="m-3">MAYOR O MENOR</h1>
 
 <div class="row">
     <div class="col">
-        <h2>CARTA ANTERIOR</h2><br>
-        <img [src]="cartaAnterior">
+        <div class="card bg-dark border-0 h-100 text-white-50">
+            <div class="card-header">
+                <span class="card-title fs-6">CARTA ANTERIOR</span>
+            </div>
+                <div class="card-body">
+                    <img [src]="cartaAnterior">
+            </div>
+        </div>
     </div>
     <div class="col">
-        <h2>CARTA ACTUAL</h2><br>
-        <img [src]="cartaActual">
+        <div class="card bg-dark border-0 h-100 text-white-50">
+            <div class="card-header">
+                <span class="card-title fs-6">CARTA ACTUAL</span>
+            </div>
+                <div class="card-body">
+                    <img [src]="cartaActual">
+            </div>
+        </div>
     </div>
 </div>
 <br>
 <div class="row">
-    <h1 class="font-monospace text-warning" style="font-size: 1.8rem;">PUNTOS: {{puntuacion}}</h1>
+    <h1 class="font-monospace text-warning" style="font-size: 1.5rem;">PUNTOS: {{puntuacion}}</h1>
 </div>
 <div class="row">
     <div class="col">

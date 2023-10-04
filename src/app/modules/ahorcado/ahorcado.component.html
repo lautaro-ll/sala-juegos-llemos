@@ -1,7 +1,8 @@
-<h1 class="m-3" style="font-family: cursive;">AHORCADO</h1>
+<h1 class="m-3">AHORCADO</h1>
 
 <div class="card card text-bg-secondary mb-3">
   <div class="card-body">
+    <img [src]="this.imagen" [class.perdido]="perdido">
     <input type="text" readonly [value]="this.palabra" class="form-control form-control-lg font-monospace text-center bg-body-secondary m3" style="letter-spacing: 0.5rem;">
     <section id="keyboard">
         <div class="kb-row">
@@ -29,7 +30,7 @@
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Ñ', $event);">Ñ</button>
         </div>
         <div class="kb-row">
-            <!-- <button class="btn btn-dark btn-wide" type="button">ENTER</button> -->
+            <button class="btn btn-dark" type="button" disabled></button>
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('Z', $event);">Z</button>
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('X', $event);">X</button>
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('C', $event);">C</button>
@@ -37,9 +38,8 @@
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('B', $event);">B</button>
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('N', $event);">N</button>
             <button #boton class="btn btn-dark" type="button" (click)="clickLetra('M', $event);">M</button>
-            <!-- <button class="btn btn-dark btn-wide" type="button">DEL</button> -->
+            <button class="btn btn-dark btn-wide" type="button" disabled></button>
         </div>
     </section>
-    <input type="text" readonly [value]="this.errores" class="form-control font-monospace text-center text-danger bg-dark m3">
   </div>
 </div>

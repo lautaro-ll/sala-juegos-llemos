@@ -1,0 +1,28 @@
+<div class="chat-container">
+    <div class="messages">
+        <div *ngFor="let message of messages">
+            <div *ngIf="message.nombre == usuario?.nombre else elseBlock">
+                <div class="message d-flex justify-content-end">
+                    <div class="alert alert-success" style="width: fit-content;">
+                        <strong class="text-success d-block text-end">{{ message.nombre }}</strong>
+                        <p class="d-block text-start">{{ message.text }}</p>
+                        <small class="text-muted d-block text-end">{{ message.fecha }}</small>
+                    </div>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="message d-flex justify-content-start">
+                    <div class="alert alert-primary" style="width: fit-content;">
+                        <strong class="text-primary d-block text-start">{{ message.nombre }}</strong>
+                        <p class="d-block text-end">{{ message.text }}</p>
+                        <small class="text-muted d-block text-start">{{ message.fecha }}</small>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="input-container">
+        <input class="form-control" type="text" [(ngModel)]="message" (keydown.enter)="sendMessage()">
+        <button class="btn btn-primary ms-1" (click)="sendMessage()">Enviar</button>
+    </div>
+</div>

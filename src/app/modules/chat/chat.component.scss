@@ -1,0 +1,50 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 84vh;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.messages::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.messages::-webkit-scrollbar-thumb {
+  background: steelblue;
+  border-radius: 0.5rem;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.messages::-webkit-scrollbar-thumb:hover {
+  background: steelblue;
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.messages::-webkit-scrollbar-thumb:active {
+  background-color: skyblue;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+.messages::-webkit-scrollbar-track {
+  background: whitesmoke;
+  border-radius: 0.5rem;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+.messages::-webkit-scrollbar-track:hover,
+.messages::-webkit-scrollbar-track:active {
+background: gainsboro;
+}

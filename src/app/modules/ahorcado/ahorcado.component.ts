@@ -1,4 +1,4 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,16 +8,64 @@ import Swal from 'sweetalert2';
 })
 export class AhorcadoComponent {
 
-  constructor() {}
+  constructor() { }
 
-  errores: string = '';
+  ruta: string = '/../../assets/ahorcado/';
+  errores: number = 0;
+  imagen: string = '';
   palabra: string = '';
   solucion: string = '';
+  perdido: boolean = false;
+  @ViewChildren('boton') btnElements?: QueryList<ElementRef>;
 
   ngOnInit() {
-    this.solucion = 'LAPICERA'; //SIEMPRE MAYUSCULA
+    this.getNuevaSolucion();
+    this.actualizarImagen();
+  }
+
+  getNuevaSolucion() {  //TRAER PALABRA
+    this.solucion = 'LAPICERA'.toUpperCase();
     for (let i = 0; i < this.solucion.length; i++) {
-      this.palabra += '_';      
+      this.palabra += '_';
+    }
+  }
+
+  actualizarImagen() {
+    this.imagen = this.ruta + this.errores + '.svg';
+  }
+
+  clickLetra(letra: string, $event: MouseEvent) {
+    ($event.target as HTMLButtonElement).disabled = true;
+    if (this.solucion.includes(letra)) {
+      for (let i = 0; i < this.solucion.length; i++) {
+        if (this.solucion[i] == letra) {
+          this.palabra = this.replaceAt(this.palabra, i, letra)
+        }
+      }
+      if (!this.palabra.includes('_')) {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Ganaste!',
+          text: 'Volvé a intentar!',
+        }).then((result) => {
+          this.ReiniciarJuego();
+        })
+      }
+    } else {
+      if (this.errores > 5) {
+        this.perdido = true;
+        Swal.fire({
+          icon: 'error',
+          title: 'Perdiste...',
+          text: 'Volvé a intentar!',
+        }).then((result) => {
+          this.ReiniciarJuego();
+        })
+      }
+      else {
+        this.errores++;
+        this.actualizarImagen();
+      }
     }
   }
 
@@ -25,55 +73,17 @@ export class AhorcadoComponent {
     return palabra.substring(0, index) + reemplazo + palabra.substring(index + reemplazo.length);
   }
 
-  clickLetra(letra: string, $event: MouseEvent) { 
-    ($event.target as HTMLButtonElement).disabled = true;
-    if(this.solucion.includes(letra)){
-      for (let i = 0; i < this.solucion.length; i++) {
-        if(this.solucion[i] == letra){
-          this.palabra = this.replaceAt(this.palabra, i, letra)
-        }
-      }
-      if(!this.palabra.includes('_')) {
-        Swal.fire({
-          icon: 'success',
-          title: '¡Ganaste!',
-          text: 'Volvé a intentar!',        
-        }).then((result) => {
-          this.ReiniciarJuego();
-        })
-      }
-    } else {
-      if(this.errores.length > 4) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Perdiste...',
-          text: 'Volvé a intentar!',        
-        }).then((result) => {
-          this.ReiniciarJuego();
-        })
-      }
-      else {
-        this.errores += 'X'
-        }
-    }
-  }
-
-  @ViewChildren('boton') btnElements?: QueryList<ElementRef>;
-
   ReiniciarJuego() {
-    this.errores = '';
+    this.perdido = false;
     this.palabra = '';
-
-    this.solucion = 'lapicera';
-    for (let i = 0; i < this.solucion.length; i++) {
-      this.palabra += '_ ';      
-    }
+    this.errores = 0;
+    this.actualizarImagen();
+    this.getNuevaSolucion();
 
     this.btnElements?.forEach(elementRef => {
       const element: HTMLButtonElement = elementRef.nativeElement;
       element.disabled = false;
     });
-
   }
 
 }

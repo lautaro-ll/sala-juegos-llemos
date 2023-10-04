@@ -28,10 +28,9 @@ export class HomeComponent implements OnInit {
     }
 
     this.subscription = this.usuariosService.currentLoginState.subscribe((idloc)=>{
-      console.log(idloc)
       this.usuariosService.getUsuario(idloc)
-      .then((respuesta) => {console.log(respuesta); this.usuario = respuesta}) //poner en el login y traer los datos visibles del usuario a un local storage
-      .catch((err)=>{ console.log(err) })
+      .then((respuesta) => { this.usuario = respuesta; }) //poner en el login y traer los datos visibles del usuario a un local storage
+      .catch((err)=>{ console.log('login error: ', err); })
       .then(() => this.interceptor.updateOverlayState(false))
     });
   }
