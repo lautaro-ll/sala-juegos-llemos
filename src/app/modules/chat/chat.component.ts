@@ -4,7 +4,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
 import { InterceptorService } from 'src/app/services/interceptor.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
