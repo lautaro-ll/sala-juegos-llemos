@@ -1,4 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { PalabrasService } from 'src/app/services/palabras.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AhorcadoComponent {
 
-  constructor() { }
+  constructor(private palabrasService: PalabrasService) { }
 
   ruta: string = '/../../assets/ahorcado/';
   errores: number = 0;
@@ -24,10 +25,15 @@ export class AhorcadoComponent {
   }
 
   getNuevaSolucion() {  //TRAER PALABRA
-    this.solucion = 'LAPICERA'.toUpperCase();
-    for (let i = 0; i < this.solucion.length; i++) {
-      this.palabra += '_';
-    }
+    this.solucion = ''.toUpperCase();
+    this.palabrasService.get().then(
+      res => {
+        console.log(res[0].toUpperCase());
+        this.solucion = res[0].toUpperCase();
+        for (let i = 0; i < this.solucion.length; i++) {
+          this.palabra += '_';
+        }
+      });
   }
 
   actualizarImagen() {

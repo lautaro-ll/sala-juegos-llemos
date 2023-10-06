@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { Usuario } from 'src/app/models/usuario';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ export class ChatComponent {
   messages: any[] = [];
   userSubscription?: Subscription;
   chatSubscription?: Subscription;
+  @ViewChild('scrollMe') private myScrollContainer!: ElementRef;
 
   constructor(private chatService: ChatService, private usuariosService: UsuariosService, private interceptor: InterceptorService) {}
 
@@ -25,6 +26,7 @@ export class ChatComponent {
 
     this.chatSubscription = this.chatService.getMessages().subscribe(messages => {
       this.messages = messages;
+      setTimeout(()=>this.scrollToBottom(),0);
     });
 
     this.userSubscription = this.usuariosService.currentLoginState.subscribe((idloc)=>{
@@ -37,6 +39,11 @@ export class ChatComponent {
   sendMessage() {
     this.chatService.sendMessage(this.usuario!, this.message);
     this.message = '';
+  }
+
+  scrollToBottom(): void {
+    console.log('scrollToBottom');
+    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
   }
 
   ngOnDestroy(): void {
