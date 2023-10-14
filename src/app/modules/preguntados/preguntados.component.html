@@ -1,1 +1,49 @@
 <h1 class="m-3">PREGUNTADOS</h1>
+<div class="mb-3 row align-items-center justify-content-center">
+    <label class="col-auto col-form-label">Idioma:</label>
+    <div class="col-auto">
+        <select class="form-select-sm" (change)="changeLang($event)">
+            <option value="en" selected>Ingles</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-sm btn-secondary" (click)="resetLang()">Aplicar y reiniciar</button>
+  </div>
+</div>
+
+
+<div *ngIf="!loading && opciones.length == 4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-8 align-content-center d-grid">
+                    <h4 class="card-title text-center m-1" [innerHTML]="pregunta"></h4>
+                    <div class="d-flex justify-content-center mb-2">
+                        <span class="badge rounded-pill text-bg-primary">{{categoria}}</span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img [src]="urlImg" class="w-100">
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="button" class="btn" [class]="btnClass[0]" [disabled]="siguiente"
+                    (click)="clickOption(0)">{{opciones[0]}}</button>
+                <button type="button" class="btn" [class]="btnClass[1]" [disabled]="siguiente"
+                    (click)="clickOption(1)">{{opciones[1]}}</button>
+                <button type="button" class="btn" [class]="btnClass[2]" [disabled]="siguiente"
+                    (click)="clickOption(2)">{{opciones[2]}}</button>
+                <button type="button" class="btn" [class]="btnClass[3]" [disabled]="siguiente"
+                    (click)="clickOption(3)">{{opciones[3]}}</button>
+                <button type="button" class="btn btn-primary" [disabled]="!siguiente"
+                    (click)="nextQuestion()">Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="alert alert-success text-center mt-1" role="alert">
+            <strong>Respuestas correctas: {{puntuacion}}</strong>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksala_juegos_llemos=self.webpackChunksala_juegos_llemos||[]).push([[592],{708:(c,_,e)=>{e.d(_,{n:()=>n});var o=e(6973);function n(r,l){const f="object"==typeof l;return new Promise((s,u)=>{let t,a=!1;r.subscribe({next:m=>{t=m,a=!0},error:u,complete:()=>{a?s(t):f?s(l.defaultValue):u(new o.K)}})})}}}]);
