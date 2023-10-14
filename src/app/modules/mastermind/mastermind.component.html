@@ -1,0 +1,87 @@
+<h1 class="m-3">Mastermind</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="mb-3 row align-items-center justify-content-center">
+            <div class="col-auto m-1">
+                <label for="iIntentos" class="col-auto col-form-label-sm me-2">Número de intentos: </label>
+                <input type="number" id="iIntentos" class="form-control-sm" [(ngModel)]="intentosSel">
+            </div>
+            <div class="col-auto m-1">
+                <label for="iColores" class="col-auto col-form-label-sm me-2">Cantidad de colores: </label>
+                <input type="number" id="iColores" class="form-control-sm" [(ngModel)]="coloresSel">
+            </div>
+            <div class="col-auto m-1">
+                <button type="submit" class="btn btn-sm btn-secondary" (click)="changeSettings()">Aplicar y reiniciar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-3 row align-items-center justify-content-center">
+            <label for="iIntentos" class="col-auto col-form-label-sm">Referencias: </label>
+            <div class="col-auto">
+                <div class="align-items-center d-flex">
+                    <div class="coincidencia bg-dark border border-light"></div>
+                    <small class="ms-2">Color y Posicion correcto</small>
+                </div>
+                <div class="align-items-center d-flex">
+                    <div class="coincidencia bg-secondary border border-light"></div>
+                    <small class="ms-2">Color correcto</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body bg-light">
+        <div class="row align-content-center justify-content-center">
+            <div *ngFor="let color of solucion" class="col-2">
+                <div class="w-100 h-100" [class.bg-black]="ocultarSol" [class]="color"></div>
+            </div>
+        </div>
+        <hr>
+        <div *ngFor="let n of numSequence(topeIntentos); let i = index;">
+            <div class="row align-content-center justify-content-center my-1">
+                <div class="col"></div>
+                <div class="col-2" *ngFor="let n of numSequence(topeColores); let j = index;">
+                    <div class="w-100 h-100" *ngIf="intentos[i]" [class]="intentos[i][j]"></div>
+                </div>
+                <div class="col d-flex ps-3">
+                    <div class="align-content-center d-grid ms-1" *ngFor="let value of coincidencias[i]">
+                        <div class="coincidencia bg-dark" *ngIf="value == 2" title="Color y Posicion correcto"></div>
+                        <div class="coincidencia bg-secondary" *ngIf="value == 1" title="Color correcto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row align-content-center justify-content-center mb-3">
+            <div class="col-2" *ngFor="let n of numSequence(topeColores); let j = index;">
+                <div class="w-100 h-100" [ngClass]="colorSel[j]"></div>
+            </div>
+        </div>
+        <h4>Opciones:</h4>
+        <div class="row align-content-center justify-content-center">
+            <button class="col-2 rounded-end-0 btn btn-outline-secondary" (click)="delGuess()">
+                <fa-icon [icon]="faDeleteLeft" size="lg"></fa-icon>
+            </button>
+            <div class="col-2"><button class="btn w-100 h-100 color-0" (click)="addGuess('color-0')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-1" (click)="addGuess('color-1')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-2" (click)="addGuess('color-2')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-3" (click)="addGuess('color-3')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-4" (click)="addGuess('color-4')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-5" (click)="addGuess('color-5')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-6" (click)="addGuess('color-6')"></button></div>
+            <div class="col-2"><button class="btn w-100 h-100 color-7" (click)="addGuess('color-7')"></button></div>
+            <button class="col-2 rounded-start-0 btn btn-outline-secondary" (click)="sendGuess()"
+                [disabled]="!canGuess || !ocultarSol">
+                <fa-icon [icon]="faTurnUp" size="lg"></fa-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="card-footer">
+    <div class="alert alert-success text-center mt-1" role="alert">
+        <strong>Intentos: {{puntuacion}}</strong>
+    </div>
+</div>

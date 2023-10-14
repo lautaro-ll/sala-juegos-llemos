@@ -32,6 +32,11 @@ const routes: Routes = [ {
       .then(mod => mod.PreguntadosModule)
     },
     { 
+      path: 'mastermind', 
+      loadChildren: () => import('../../modules/mastermind/mastermind.module')
+      .then(mod => mod.MastermindModule)
+    },
+    { 
       path: 'chat', 
       loadChildren: () => import('../../modules/chat/chat.module')
       .then(mod => mod.ChatModule)

@@ -1,0 +1,42 @@
+@font-face {
+    font-family: BerkshireSwash;
+    src: url(../../../assets/fonts/BerkshireSwash-Regular.ttf);
+}
+
+@font-face {
+    font-family: CinzelDecorative;
+    src: url(../../../assets/fonts/CinzelDecorative-Bold.ttf);
+}
+
+h1 {
+    font-family: CinzelDecorative;
+}
+
+.form-control-sm {
+    max-width: 3.5rem;
+}
+
+.col-2 {
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid lightgray;
+    padding: 2px;
+
+    div {
+        border-radius: 100%;
+    }
+}
+
+.color-0 { background-color: #0dcaf0; }
+.color-1 { background-color: #0d6efd; }
+.color-2 { background-color: #6f42c1; }
+.color-3 { background-color: #dc3545; }
+.color-4 { background-color: #fd7e14; }
+.color-5 { background-color: #ffc107; }
+.color-6 { background-color: #198754; }
+.color-7 { background-color: #212529; }
+
+.coincidencia {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
